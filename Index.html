@@ -1,0 +1,47 @@
+<html ng-app='yelpEasy'>
+<script src='bower_components/angular/angular.js'></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="https://rawgit.com/bettiolo/oauth-signature-js/master/dist/oauth-signature.min.js"></script>
+<script src='bower_components/jquery/dist/jquery.min.js'></script>
+<link src='bower_components/bootstrap/dist/js/bootstrap.min.js'>
+</script>
+<script src="app/app.js"></script>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Yelp Easy Mode</title>
+    <link rel='stylesheet' type='text/css' href='bower_components/bootstrap/dist/css/bootstrap.css'>
+</head>
+
+<body ng-controller='YelpController as yelp' class='container center-block text-center'>
+    <div class='jumbotron'>
+        <h1 class='text-center'>Yelp Easy Mode</h1>
+        <p class='text-center'>Enter your city and the type of food you want</p>
+        <form name='searchForm' class='form-inline'>
+            <input class='form-control' type='text' ng-model='city' placeholder='City'>
+            <input type='text' class='form-control' ng-model='cuisine' placeholder='Type of Food'>
+            <input class="btn btn-primary" type='submit' value='Submit' ng-click='getResults()'>
+        </form>
+        <div>
+            <div class='panel panel-primary'>
+                <div class='panel-heading'>
+                    <h3 class='panel-title'> Results</h3>
+                </div>
+                <div class='panel-body'>
+                    <a class='primary' ng-if='result && result.restaurant && show' ng-href='{{result.restaurant.url}}'>
+                        <h2>{{result.restaurant.name}}</h2></a>
+                </div>
+                <div ng-if='result && result.restaurant && show'>
+                <a id='uber'href="https://m.uber.com/"><img class='uber' src="UBER_API_RIDE BY UBER Badges_1x GREY_36px.png"></a>
+                </div>
+                <div class = 'container'>
+                    <iframe class='container' ng-if='result && result.restaurant && show' width="300" height="300" frameborder="0" style="border:0" src='{{mapUrl}}'>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script type="text/javascript" src="https://secure.opentable.com/frontdoor/default.aspx?rid=20416&restref=20416&bgcolor=F6F6F3&titlecolor=0F0F0F&subtitlecolor=0F0F0F&btnbgimage=https://secure.opentable.com/frontdoor/img/ot_btn_red.png&otlink=FFFFFF&icon=dark&mode=wide&hover=1"></script><a href="http://www.opentable.com/gar-woods-grill-and-pier-restaurant-reservations-carnelian-bay?rtype=ism&restref=20416" class="OT_ExtLink container"></a> -->
+</body>
+
+</html>
